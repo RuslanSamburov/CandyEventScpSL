@@ -20,7 +20,7 @@ namespace CandyEvent.Commands
 
             if (Plugin.Singleton._candyCoroutine.IsRunning)
             {
-                response = "Таймер запущен!";
+                response = "Ивент запущен!";
                 return false;
             }
 
