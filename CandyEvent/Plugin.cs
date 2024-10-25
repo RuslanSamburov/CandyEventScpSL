@@ -10,7 +10,7 @@ namespace CandyEvent
     {
         public override string Name => "CandyEvent";
         public override string Author => "Руслан0308c";
-        public override Version Version => new Version(1, 0, 0);
+        public override Version Version => new Version(1, 0, 1);
         public override Version RequiredExiledVersion => new Version(8, 9, 11);
 
         public static Plugin Singleton;
