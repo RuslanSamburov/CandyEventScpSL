@@ -1,4 +1,5 @@
 ﻿using CommandSystem;
+using Exiled.Permissions.Extensions;
 using System;
 
 namespace CandyEvent.Commands
@@ -11,6 +12,18 @@ namespace CandyEvent.Commands
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
+            if (!sender.CheckPermission($"{MainCommand.Prefix}.{Command}"))
+            {
+                response = MainCommand.NotPermissionMessage;
+                return false;
+            }
+
+            if (!Plugin.Singleton._candyCoroutine.IsRunning)
+            {
+                response = "Ивент не запущен!";
+                return false;
+            }
+
             Plugin.Singleton._management.StopCandyEvent(); 
             response = "Ивент остановлен";
             return true;
