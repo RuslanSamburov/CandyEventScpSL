@@ -32,27 +32,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\EXILED-13.6.9\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\EXILED-8.9.11\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\EXILED-13.6.9\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>..\..\..\EXILED-8.9.11\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="CommandSystem.Core">
-      <HintPath>..\..\..\EXILED-13.6.9\CommandSystem.Core.dll</HintPath>
+      <HintPath>..\..\..\EXILED-8.9.11\CommandSystem.Core.dll</HintPath>
     </Reference>
     <Reference Include="Exiled.API">
-      <HintPath>..\..\..\EXILED-13.6.9\Exiled.API.dll</HintPath>
+      <HintPath>..\..\..\EXILED-8.9.11\Exiled.API.dll</HintPath>
     </Reference>
     <Reference Include="Exiled.Events">
-      <HintPath>..\..\..\EXILED-13.6.9\Exiled.Events.dll</HintPath>
+      <HintPath>..\..\..\EXILED-8.9.11\Exiled.Events.dll</HintPath>
     </Reference>
     <Reference Include="Exiled.Permissions">
-      <HintPath>..\..\..\EXILED-13.6.9\Exiled.Permissions.dll</HintPath>
+      <HintPath>..\..\..\EXILED-8.9.11\Exiled.Permissions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\EXILED-13.6.9\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\..\EXILED-8.9.11\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

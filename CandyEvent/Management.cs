@@ -1,5 +1,6 @@
 ﻿using Exiled.API.Extensions;
 using Exiled.API.Features;
+using Exiled.API.Features.Items;
 using InventorySystem.Items.Usables.Scp330;
 using MEC;
 using System;
@@ -11,10 +12,9 @@ namespace CandyEvent.Commands
     public class Management
     {
         List<CandyKindID> _candys = Enum.GetValues(typeof(CandyKindID)).Cast<CandyKindID>().Where(candy => candy != CandyKindID.None).ToList();
-        public void StartCandyEvent(int? interval = null)
+        public void StartCandyEvent(int interval, int countCandy)
         {
-            int timeInterval = interval ?? Plugin.Singleton.Config.CandyInterval;
-            Plugin.Singleton._candyCoroutine = Timing.RunCoroutine(CandyGivingCoroutine(timeInterval));
+            Plugin.Singleton._candyCoroutine = Timing.RunCoroutine(CandyGivingCoroutine(interval, countCandy));
         }
 
         public void StopCandyEvent()
@@ -22,15 +22,19 @@ namespace CandyEvent.Commands
             Timing.KillCoroutines(Plugin.Singleton._candyCoroutine);
         }
 
-        private IEnumerator<float> CandyGivingCoroutine(int interval)
+        private IEnumerator<float> CandyGivingCoroutine(int interval, int countCandy)
         {
             while (true)
             {
                 yield return Timing.WaitForSeconds(interval);
 
-                foreach (var player in Player.List.Where(x => x.IsHuman))
+                foreach (Player player in Player.List.Where(x => x.IsHuman))
                 {
-                    player.TryAddCandy(_candys.GetRandomValue());
+                    for (int i = 0; i < countCandy; i++)
+                    {
+                        player.TryAddCandy(_candys.GetRandomValue());
+                        yield return Timing.WaitForSeconds(.1f);
+                    }
                 }
             }
         }

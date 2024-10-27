@@ -25,15 +25,15 @@ namespace CandyEvent
             _serverHandlers = new ServerHandlers();
 
             Singleton = this;
-            Exiled.Events.Handlers.Server.RoundEnded += _serverHandlers.OnRoundEnded;
+            Exiled.Events.Handlers.Server.RestartingRound += _serverHandlers.OnRestartingRound;
 
             base.OnEnabled();
         }
 
         public override void OnDisabled()
         {
-            Exiled.Events.Handlers.Server.RoundEnded -= _serverHandlers.OnRoundEnded;
-            Timing.KillCoroutines(_candyCoroutine);
+            Exiled.Events.Handlers.Server.RestartingRound -= _serverHandlers.OnRestartingRound;
+            _management.StopCandyEvent();
             Singleton = null;
 
             base.OnDisabled();

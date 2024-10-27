@@ -1,10 +1,8 @@
-﻿using Exiled.Events.EventArgs.Server;
-
-namespace CandyEvent.Events
+﻿namespace CandyEvent.Events
 {
     public class ServerHandlers
-    {
-        public void OnRoundEnded(RoundEndedEventArgs ev)
+    {       
+        public void OnRestartingRound()
         {
             Plugin.Singleton._management.StopCandyEvent();
         }

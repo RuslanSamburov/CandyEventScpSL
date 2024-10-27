@@ -8,7 +8,7 @@ namespace CandyEvent.Commands
     {
         public string Command => "start";
         public string[] Aliases => new string[] { };
-        public string Description => "Запускает ивент с конфетами: интервал по умолчанию " + Plugin.Singleton.Config.CandyInterval + " сек";
+        public string Description => $"Запускает ивент с конфетами: {{time:{Plugin.Singleton.Config.CandyInterval}}} {{candyCount:{Plugin.Singleton.Config.CountCandy}}}";
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
@@ -24,15 +24,21 @@ namespace CandyEvent.Commands
                 return false;
             }
 
-            int? interval = null;
+            int interval = Plugin.Singleton.Config.CandyInterval;
+            int countCandy = Plugin.Singleton.Config.CountCandy;
 
             if (arguments.Count > 0 && int.TryParse(arguments.At(0), out int parsedInterval))
             {
                 interval = parsedInterval;
             }
 
-            Plugin.Singleton._management.StartCandyEvent(interval);
-            response = $"Ивент запущен с интервалом {interval ?? Plugin.Singleton.Config.CandyInterval} сек";
+            if (arguments.Count > 1 && int.TryParse(arguments.At(1), out int parsedCountCandy))
+            {
+                countCandy = parsedCountCandy;
+            }
+
+            Plugin.Singleton._management.StartCandyEvent(interval, countCandy);
+            response = $"Ивент запущен\n- Интервал: {interval} сек\n- Количество конфет: {countCandy} шт";
             return true;
         }
     }
